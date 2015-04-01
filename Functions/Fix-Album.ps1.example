@@ -1,0 +1,3 @@
+Get-ChildItem "Int*" | foreach { 
+    rename-item $_ $_.pschildname.Replace("International Observer - Heard - ", "")
+}
