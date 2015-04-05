@@ -23,6 +23,7 @@
  #  <11>  01-Mar-2015 Change error output colors
  #  <12>  29-Mar-2015 Set $OutputEncoding to UTF-8
  #  <13>  31-Mar-2015 Smarten up the module loading
+ #  <14>  03-Apr-2015 Remove Windows.old stuff
  #>
 
 # Who's your daddy?
@@ -94,8 +95,8 @@ Function Vim2Dos {
 
 # Tweak the PATH
 $paths = @(
-  "C:\Users\Tom.000\bin",
-  "C:\Users\Tom.000\Documents\WindowsPowerShell\Scripts",
+  "C:\Users\Tom\bin",
+  "C:\Users\Tom\Documents\WindowsPowerShell\Scripts",
   $($Env:Path)
 )
 
