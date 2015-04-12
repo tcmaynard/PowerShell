@@ -1,0 +1,22 @@
+Bulk Renaming Files
+ 
+Let's assume you have a folder full of picture files, and you'd like 
+to standardize naming.
+
+Here is a script illustrating how you can do a bulk rename: 
+ 
+$i = 0 
+ 
+Get-ChildItem -Path c:\pictures -Filter *.jpg | 
+ForEach-Object {
+    $extension = $_.Extension
+    $newName = 'pic_{0:d6}{1}' -f  $i , $extension 
+    $i++ 
+    Rename-Item -Path $_.FullName -NewName $newName 
+} 
+ 
+All JPG files in the picture folder are renamed. The new name is "pic_" 
+and a six digit number.
+
+You can easily adjust the script to rename other file types, or use 
+another file name template.

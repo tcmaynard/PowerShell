@@ -1,0 +1,10 @@
+Shorten the prompt (move it elsewhere!)
+These lines:
+  (a) Resets the prompt, and
+  (b) Makes the window title be the current directory
+
+function prompt (
+{
+  "PS> "
+  $host.UI.RawUI.WindowTitle = Get-Location
+}

@@ -1,0 +1,28 @@
+Normalizing Line Endings
+
+When you download files from the Internet, you may run into situations 
+where the file won’t open correctly in editors. Most likely, this is 
+caused by non-default line endings.
+
+Here is an example of such a problem. In a previous tip we showed you 
+how to download a MAC address vendor list. When you do that and open 
+the file in the Notepad, all line breaks are gone:
+
+$url = 'http://standards.ieee.org/develop/regauth/oui/oui.txt'
+$outfile = "$home\vendorlist.txt"
+
+Invoke-WebRequest -Uri $url -OutFile $outfile
+
+Invoke-Item -Path $outfile 
+
+To repair the file, simply use this code:
+$OldFile = "$home\vendorlist.txt"
+$NewFile = "$home\vendorlistGood.txt"
+
+Get-Content $OldFile | Set-Content -Path $NewFile
+
+notepad $NewFile 
+Get-Content is capable of identifying even non-standard line breaks, 
+so the result is a string array of lines. When you write these back 
+to a new file, then all is good because Set-Content will use default 
+line endings.

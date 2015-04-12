@@ -1,0 +1,34 @@
+Process Killer (and some gotchas)
+
+In a previous tip we explained how you can turn Out-GridView into a 
+selection dialog, and suggested a couple of ideas. One idea was to 
+list all top level applications, and allow the user to select one, 
+and kill it.
+
+To get all top level applications, try this first:
+ 
+PS> Get-Process | Where-Object MainWindowTitle | Select-Object -Property Name, Description , MainWindowTitle, StartTime 
+ 
+This line filters the process lists and shows only processes that have 
+a MainWindowTitle property set. Effectively, it gets you a list of 
+processes that have a window, omitting all invisible background 
+processes.
+
+Next, pipe the result to Out-GridView, and allow single selections: 
+ 
+PS> Get-Process | Where-Object MainWindowTitle | Select-Object -Property Name, Description , MainWindowTitle, StartTime | Out-GridView -Title 'Kill Application' -OutputMode Single | Stop-Process -WhatIf 
+ 
+This line opens a grid view window with all running processes, and 
+when you select one and click “OK”, the process is killed. Well, not 
+really: the sample code includes –WhatIf, so Stop-Process only simulates.
+And that is a good thing, because you may notice that selecting one 
+process will also kill all other processes with the same name. 
+
+This is because Stop-Process can receive two different pieces of 
+information: a name (string), or a process ID (int). Since the line 
+used Select-Object to limit the properties, and did not include the 
+process ID, Stop-Process will pick the name – and kills any process 
+with that name.  To be more specific, and kill only the selected 
+process, make sure you include the process ID: 
+ 
+PS> Get-Process | Where-Object MainWindowTitle | Select-Object -Property Name, Id , Description, MainWindowTitle, StartTime | Out-GridView -Title 'Kill Application' -OutputMode Single | Stop-Process -WhatIf 

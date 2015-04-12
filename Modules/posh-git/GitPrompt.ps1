@@ -17,25 +17,25 @@ $global:GitPromptSettings = New-Object PSObject -Property @{
 
     BranchForegroundColor       = [ConsoleColor]::Cyan
     BranchBackgroundColor       = $Host.UI.RawUI.BackgroundColor
-    BranchAheadForegroundColor  = [ConsoleColor]::Green
+    BranchAheadForegroundColor  = [ConsoleColor]::Cyan
     BranchAheadBackgroundColor  = $Host.UI.RawUI.BackgroundColor
-    BranchBehindForegroundColor = [ConsoleColor]::Red
+    BranchBehindForegroundColor = [ConsoleColor]::Cyan
     BranchBehindBackgroundColor = $Host.UI.RawUI.BackgroundColor
     BranchBehindAndAheadForegroundColor = [ConsoleColor]::Yellow
     BranchBehindAndAheadBackgroundColor = $Host.UI.RawUI.BackgroundColor
 
     BeforeIndexText           = ""
-    BeforeIndexForegroundColor= [ConsoleColor]::DarkGreen
+    BeforeIndexForegroundColor= [ConsoleColor]::Cyan
     BeforeIndexBackgroundColor= $Host.UI.RawUI.BackgroundColor
 
-    IndexForegroundColor      = [ConsoleColor]::DarkGreen
+    IndexForegroundColor      = [ConsoleColor]::Cyan
     IndexBackgroundColor      = $Host.UI.RawUI.BackgroundColor
 
-    WorkingForegroundColor    = [ConsoleColor]::DarkRed
+    WorkingForegroundColor    = [ConsoleColor]::Cyan
     WorkingBackgroundColor    = $Host.UI.RawUI.BackgroundColor
 
     UntrackedText             = ' !'
-    UntrackedForegroundColor  = [ConsoleColor]::DarkRed
+    UntrackedForegroundColor  = [ConsoleColor]::Cyan
     UntrackedBackgroundColor  = $Host.UI.RawUI.BackgroundColor
 
     ShowStatusWhenZero        = $true
