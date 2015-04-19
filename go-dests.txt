@@ -1,9 +1,13 @@
-Key        Value
-------     ------------------
-home       C:\Users\Tom
-bundle     C:\Users\Tom\vimfiles\bundle
-here       C:\Users\Tom\Documents\WindowsPowerShell
-prog       C:\Program Files
-p86        C:\Program Files (x86)
-proj       C:\Users\Tom\Projects
-old        C:\Windows.old.000\users\tom
+Key          Value
+--------     ------------------
+home         C:\Users\Tom
+bundle       C:\Users\Tom\vimfiles\bundle
+here         C:\Users\Tom\Documents\WindowsPowerShell
+prog         C:\Program Files
+p86          C:\Program Files (x86)
+proj         C:\Users\Tom\Projects
+old          C:\Windows.old.000\users\tom
+startup      C:\Users\Tom\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+fun          C:\Users\Tom\Documents\WindowsPowerShell\functions
+vimfiles     C:\Users\Tom\vimfiles
+
