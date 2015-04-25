@@ -64,8 +64,8 @@ Function which ($app) { Get-Command $app | Format-Table Path }
 
 # Tweak the PATH
 $paths = @(
-  "C:\Users\Tom.000\bin",
-  "C:\Users\Tom.000\Documents\WindowsPowerShell\Scripts",
+  "C:\Users\Tom\bin",
+  "C:\Users\Tom\Documents\WindowsPowerShell\Scripts",
   $($Env:Path)
 )
 
