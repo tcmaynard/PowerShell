@@ -1,0 +1,2 @@
+Show-Command: display tabular fill-out-the-form
+<some-command> | Get-Member: show what's inside
