@@ -24,6 +24,7 @@
  #  <12>  29-Mar-2015 Set $OutputEncoding to UTF-8
  #  <13>  31-Mar-2015 Smarten up the module loading
  #  <14>  03-Apr-2015 Remove Windows.old stuff
+ #  <15>  03-May-2015 Cleanup and add "hist/redo" aliases
  #>
 
 # Who's your daddy?
@@ -41,14 +42,6 @@ Resolve-Path $here\Functions\*.ps1 |
 # messed up the Prompt) -- ditto for all the rest.
 Resolve-Path $here\Modules\* |
   Foreach-Object { Import-Module $_ }
-#Import-Module $here\modules\posh-git
-#Import-Module $here\modules\go
-#Import-Module $here\modules\PsGet
-#Import-Module $here\modules\PsUrl
-
-# Make error messages easier to read
-$host.privatedata.ErrorBackgroundColor = $host.ui.rawui.BackgroundColor
-$host.privatedata.ErrorForegroundColor = "Magenta"
 
 # Set $OutputEncoding to a sensible value
 $OutputEncoding = New-Object -typename System.Text.UTF8Encoding
@@ -62,7 +55,9 @@ New-PSDrive -name pslib -PSProvider Filesystem -Root \\SEAGATE-3F3BF2\Public\Scr
 # Inline Aliases, Functions, and Variables
 # Convenience cmdlet aliases
 Set-Alias GUI-Command Show-Command
+Set-Alias hist history
 Set-Alias mob Measure-Object
+Set-Alias redo Invoke-History
 Set-Alias ton Enable-AeroGlassTheme
 Set-Alias toff Disable-AeroGlassTheme
 
@@ -89,10 +84,6 @@ Function which ($app) { Get-Command $app | Format-Table Path }
 Function xvim  { gvim --noplugin }
 
 # Complex functions
-Function Vim2Dos {
-  Get-ChildItem *.vim -recurse | ForEach-Object { unix2dos $_ }
-}
-
 # Tweak the PATH
 $paths = @(
   "C:\Users\Tom\bin",

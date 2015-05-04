@@ -10,6 +10,10 @@ The GitStatus information requires posh-git (and thus psget, I believe)
 
 function prompt
 {
+  # Make error messages easier to read
+  $host.privatedata.ErrorBackgroundColor = $host.ui.rawui.BackgroundColor
+  $host.privatedata.ErrorForegroundColor = "Magenta"
+
   Write-Host ($env:username+"@"+$env:userdomain+"  ") -NoNewLine -ForegroundColor yellow
   Write-Host $($(Get-Location).Path.replace($home,"~")) -NoNewLine -ForegroundColor DarkCyan
   Write-Host " " -NoNewLine
