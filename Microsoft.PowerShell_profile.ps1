@@ -25,6 +25,7 @@
  #  <13>  31-Mar-2015 Smarten up the module loading
  #  <14>  03-Apr-2015 Remove Windows.old stuff
  #  <15>  03-May-2015 Cleanup and add "hist/redo" aliases
+ #  <16>  05-Jun-2015 Moved function "p" to Functions directory
  #>
 
 # Who's your daddy?
@@ -72,7 +73,7 @@ Function lf    { Get-Childitem -File }
 Function lsp   { Get-Childitem | More }
 Function music { Set-Location \\SEAGATE-3F3BF2\Public\Music }
 Function open ($thing) { Start-Process .\$thing }
-function p     { $Env:Path -Split ";" }
+# function p     { $Env:Path -Split ";" }
 Function Priv-Explore { Start-Process explorer -verb runAs }
 Function PSVersion { $PSVersionTable.PSVersion }
 Function rmrf ($dir)  { Remove-Item .\$dir -recurse -force }
