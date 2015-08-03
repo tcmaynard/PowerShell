@@ -22,5 +22,6 @@ function prompt
   Write-Host
   Write-Host $(if ($nestedpromptlevel -ge 1) { ">>" }) -NoNewLine -ForegroundColor Yellow
   Write-Host "$" -ForegroundColor Yellow -NoNewLine
+  Write-Host -ForegroundColor $host.ui.rawui.BackgroundColor -NoNewLine
   return " "
 }
