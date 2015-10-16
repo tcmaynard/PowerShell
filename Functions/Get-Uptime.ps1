@@ -8,6 +8,7 @@
 .NOTES
     File Name : Get-UpTime.ps1
     Author : Thomas Lee - tfl@psp.co.uk
+    Changed: Tom Maynard - tom@maynard.com
     Requires : PowerShell V2 CTP3
 .LINK
     Script Posted to: 
@@ -29,20 +30,14 @@ function WMIDateStringToDate($Bootup) {
 	[System.Management.ManagementDateTimeconverter]::ToDateTime($Bootup)
 }
 
-# Main script
-$Computer = "." # adjust as needed
-$computers = Get-WMIObject -class Win32_OperatingSystem -computer $computer
-
-foreach ($system in $computers) {
-	$Bootup = $system.LastBootUpTime
-	$LastBootUpTime = WMIDateStringToDate($Bootup)
+	$Boot = (Get-CimInstance -ClassName Win32_OperatingSystem).LastBootUpTime
 	$now = Get-Date
-	$Uptime = $now - $lastBootUpTime
+	$Uptime = $now - $Boot
 	$d = $Uptime.Days
 	$h = $Uptime.Hours
 	$m = $uptime.Minutes
 	$ms= $uptime.Milliseconds
 
 	"System Up for: {0} days, {1} hours, {2}.{3} minutes" -f $d,$h,$m,$ms
-} 
+
 # End script
